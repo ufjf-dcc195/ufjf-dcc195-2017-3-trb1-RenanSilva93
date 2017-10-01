@@ -1,13 +1,17 @@
 {
   "name": "tr1",
   "version": "1.0.0",
-  "description": "",
+  "description": "Trabalho 1 de Lab 6",
   "main": "index.js",
+  "engines": {
+    "node": "6.11.2"
+  },
   "dependencies": {
     "express": "^4.15.4"
   },
   "devDependencies": {},
   "scripts": {
+	"start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
