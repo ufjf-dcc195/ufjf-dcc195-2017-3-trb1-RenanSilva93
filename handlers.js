@@ -9,13 +9,13 @@ var url = require("url");
 
 function index(req, res) {
   res.writeHead(200, {"Content-Type": "text/html"});
-  res.write("<a href=http://localhost:3000/index.html>INDEX</a> <br>");
-  res.write("<a href=http://localhost:3000/sobre.html>SOBRE</a> <br>");
-  res.write("<a href=http://localhost:3000/aleatorios.html>ALEATORIOS</a> <br>");
-  res.write("<a href=http://localhost:3000/primos.html>PRIMOS</a> <br>");
-  res.write("<a href=http://localhost:3000/equacao.html>EQUACAO</a> <br>");
-  res.write("<a href=http://localhost:3000/xadrez.html>XADREZ</a><br>");
-  res.write("<a href=http://localhost:3000/xadrez.json>XADREZ JSON</a><br>");
+  res.write("<a href='/index.html'>INDEX</a> <br>");
+  res.write("<a href='/sobre.html'>SOBRE</a> <br>");
+  res.write("<a href='/aleatorios.html'>ALEATORIOS</a> <br>");
+  res.write("<a href='/primos.html'>PRIMOS</a> <br>");
+  res.write("<a href='/equacao.html'>EQUACAO</a> <br>");
+  res.write("<a href='/xadrez.html'>XADREZ</a><br>");
+  res.write("<a href='/xadrez.json'>XADREZ JSON</a><br>");
   res.end();
 }
 
@@ -25,6 +25,7 @@ function sobre(req, res) {
   res.write("<p> Matricula: 201276048 </p>");
   res.write("<p> E-mail: renan.costas@hotmail.com </p>");
   res.write("<p> Curso: Sistemas de Informacao </p>");
+  res.write("<a href='/index.html'>INDEX</a> <br>");
   res.end();
   
 }
@@ -61,6 +62,8 @@ function aleatorios(req, res) {
 		res.write("<li>"+ impares[h] +"</li>");
 	}
 	res.write("</ul>");
+	
+	res.write("<a href='/index.html'>INDEX</a> <br>");
 
   res.end();
 }
@@ -96,6 +99,8 @@ function primos(req, res) {
 	} else {
 		res.write("Numeros invalidos");
 	}
+	
+	res.write("<a href='/index.html'>INDEX</a> <br>");
 	res.end();
 	}
 	
@@ -114,6 +119,7 @@ function equacao(req, res) {
 	res.write("<input type=number name=valorC required /><br><br>");
     res.write("<input type=submit />");
     res.write("</form>");
+	res.write("<a href='/index.html'>INDEX</a> <br>");
 	res.end(); 
 	} else {
     var body = '';
@@ -140,7 +146,9 @@ function equacao(req, res) {
 		  res.write("Raiz: "+x1);
 		  res.write("<br>")
 		  res.write("Raiz: "+x2);
-	
+		  
+		  
+	  res.write("<a href='/index.html'>INDEX</a> <br>");
       res.end();
     })
 
@@ -206,6 +214,7 @@ function desenhaTabuleiro(matriz, res) {
 		}
 			res.write("</tr>");
 			res.write("</table>");
+			
 	}
 }
 
@@ -219,6 +228,7 @@ function xadrez(req, res) {
 	res.write("<input type=number name=coluna required /><br><br>");
     res.write("<input type=submit />");
     res.write("</form>");
+	res.write("<a href='/index.html'>INDEX</a> <br>");
 	
 	var matriz = [];
 	for(var i=0; i<8; i++) {
@@ -230,6 +240,7 @@ function xadrez(req, res) {
 	}
 	
 	desenhaTabuleiro(matriz, res);
+	res.end();
 	
 	} else {
     var body = '';
@@ -280,6 +291,7 @@ function xadrez(req, res) {
 			}
 		}
 	  res.writeHead(200, {"Content-Type": "text/html"});
+	  res.write("<a href='/index.html'>INDEX</a> <br>");
 	  desenhaTabuleiro(matriz, res);
 	  res.end();
     })
@@ -297,6 +309,7 @@ function xadrezJson(req, res, next) {
     res.write("<input type=number name=coluna required /><br><br>"); 
     res.write("<input type=submit />"); 
     res.write("</form>");
+	res.write("<a href='/index.html'>INDEX</a> <br>");
 	
 	var matriz = [];
 	for(var i=0; i<8; i++) {
@@ -334,7 +347,7 @@ function xadrezJson(req, res, next) {
           casa8: (line+2 > 0 && line+2 < 8 && column+1 > 0 && column+1 < 8) ? (line+2)+":"+(column+1): 0 
         } 
  
-      res.setHeader('Content-Type', 'application/json'); 
+      res.setHeader('Content-Type', 'application/json');	  
       res.end(JSON.stringify(json)); 
  
     }) 
